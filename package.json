@@ -1,7 +1,7 @@
 {
   "name": "thscs-contest-site",
   "version": "1.0.0",
-  "description": "",
+  "description": "A website for the 2017 James E. Taylor High School computer science competition.",
   "main": "index.js",
   "scripts": {},
   "repository": {
@@ -13,5 +13,16 @@
   "bugs": {
     "url": "https://github.com/CDogg99/thscs-contest-site/issues"
   },
-  "homepage": "https://github.com/CDogg99/thscs-contest-site#readme"
+  "homepage": "https://github.com/CDogg99/thscs-contest-site#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongodb": "^2.2.33",
+    "validator": "^9.0.0"
+  }
 }
