@@ -4,8 +4,8 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const path = require("path");
 const routers = require("./src/routers");
-
 const config = require("./config/config");
+const userController = require("./src/users/users.controller");
 
 const app = express();
 
@@ -16,12 +16,29 @@ app.use(bodyParser.json());
 app.use((req, res, next)=>{
     const token = req.header("authorization");
     if(token){
-        //verify token, pull user data, and set it equal to req.user
+        jwt.verify(token, config.jwt.secret, (err, payload)=>{
+            if(err){
+                req.user = null;
+                next();
+            }
+            else{
+                userController.getByUsername(payload.username, (err, result)=>{
+                    if(err){
+                        req.user = null;
+                        next();
+                    }
+                    else{
+                        req.user = result;
+                        next();
+                    }
+                });
+            }
+        });
     }
     else{
         req.user = null;
+        next();
     }
-    next();
 });
 
 app.use("/api/users", routers.userRouter);

@@ -2,10 +2,10 @@ const mongodb = require("mongodb").MongoClient;
 const config = require("../config/config");
 
 mongodb.connect(config.database.url, (err, database)=>{
-    if(err) return err;
+    if(err) throw err;
     database.collection("users", (err, collection)=>{
-        if(err) return err;
-        let numTeams = 50;
+        if(err) throw err;
+        let numTeams = 10;
         let generatedTeams = [];
         for(let i = 0; i < numTeams; i++){
             let username = "team" + (i+1);
@@ -38,7 +38,7 @@ mongodb.connect(config.database.url, (err, database)=>{
             generatedTeams.push(team);
         }
         collection.insertMany(generatedTeams, (err, result)=>{
-            if(err) return err;
+            if(err) throw err;
             console.log("Inserted " + result.insertedCount + " teams");
             process.exit();
         });
