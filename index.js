@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const path = require("path");
+const routers = require("./src/routers");
 
 const config = require("./config/config");
 
@@ -20,9 +21,12 @@ app.use((req, res, next)=>{
     else{
         req.user = null;
     }
+    next();
 });
 
-const port = 3000;
+app.use("/api/users", routers.userRouter);
+
+const port = process.env.PORT || 3000;
 app.listen(port, ()=>{
     console.log("Server running on port " + port);
 });
