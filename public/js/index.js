@@ -1,3 +1,14 @@
+var token = Cookies.get("token");
+
+if(token){
+    if(jwt_decode(token).userType=="team"){
+        window.location.replace("team.html");
+    }
+    else if(jwt_decode(token).userType=="admin"){
+        window.location.replace("admin.html");
+    }
+}
+
 $(document).ready(function(){
     //Events
     $("#loginForm").on("submit", function(){
@@ -16,11 +27,14 @@ $(document).ready(function(){
                     $("#loginResponse").html(data.error);
                 }
                 else{
-                    $("#loginResponse").html("Success");
                     var decoded = jwt_decode(data.token);
                     Cookies.set("token", data.token, {expires: 365});
-                    Cookies.set("userType", decoded.userType, {expires: 365});
-                    Cookies.set("_id", decoded._id, {expires: 365});
+                    if(decoded.userType == "team"){
+                        window.location.replace("team.html");
+                    }
+                    else if(decoded.userType == "admin"){
+                        window.location.replace("admin.html");
+                    }
                 }
             }
         });
