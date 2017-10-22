@@ -1,5 +1,5 @@
 const mongodb = require("mongodb").MongoClient;
-const config = require("./config/config");
+const config = require("../config/config");
 
 //Requires mongod to run without authentication enabled
 mongodb.connect("mongodb://localhost:27017/thscontest", (err, database)=>{

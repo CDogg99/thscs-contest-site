@@ -1,5 +1,5 @@
 const mongodb = require("mongodb").MongoClient;
-const config = require("./config/config");
+const config = require("../config/config");
 
 mongodb.connect(config.database.url, (err, database)=>{
     if(err) return err;
