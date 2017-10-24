@@ -1,11 +1,10 @@
-const mongodb = require("mongodb").MongoClient;
-const config = require("../../config/config");
 const ObjectId = require("mongodb").ObjectId;
+const mongo = require("../mongo");
 
 const userController = {
 
     getByUsername: (username, callback)=>{
-        mongodb.connect(config.database.url, (err, db)=>{
+        mongo.getConnection((err, db)=>{
             if(err){
                 return callback(err, null);
             }
@@ -24,7 +23,7 @@ const userController = {
     },
 
     getById: (_id, callback)=>{
-        mongodb.connect(config.database.url, (err, db)=>{
+        mongo.getConnection((err, db)=>{
             if(err){
                 return callback(err, null);
             }
@@ -43,7 +42,7 @@ const userController = {
     },
 
     update: (_id, update, callback)=>{
-        mongodb.connect(config.database.url, (err, db)=>{
+        mongo.getConnection((err, db)=>{
             if(err){
                 return callback(err, null);
             }
