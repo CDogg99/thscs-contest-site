@@ -42,6 +42,9 @@ app.use((req, res, next)=>{
 });
 
 app.use("/api/users", routers.userRouter);
+app.use("/", (req, res)=>{
+    res.status(404).send("HTTP 404");
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, ()=>{
