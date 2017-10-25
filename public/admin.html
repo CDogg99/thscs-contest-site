@@ -11,6 +11,64 @@
     <body>
         <button id="signOut">Sign Out</button>
         <h1>THS Computer Science Contest 2017</h1>
-        <h2>Admin Page</h2>
+        <div>
+            <h2>Update Team Scores</h2>
+            <span>Team</span>
+            <select id="teamSelect">
+                <option value="select" selected>Select</option>
+            </select>
+            <span id="updateScoresResponse"></span>
+            <form id="updateScoresForm">
+                <p>Written Scores</p>
+                <label for="m1wsIn" id="m1"></label>
+                <input type="text" id="m1wsIn">
+                <label for="m2wsIn" id="m2"></label>
+                <input type="text" id="m2wsIn">
+                <label for="m3wsIn" id="m3"></label>
+                <input type="text" id="m3wsIn">
+                <p>Coding Score</p>
+                <input type="text" id="codingScoreIn">
+                <input type="submit">
+            </form>
+        </div>
+        <div>
+            <h2>All Scores</h2>
+            <div>
+                <h3>Advanced</h3>
+                <table id="teamViewAdvanced">
+                    <thead>
+                        <tr>
+                            <th>School</th>
+                            <th>Team</th>
+                            <th>Written Score 1</th>
+                            <th>Written Score 2</th>
+                            <th>Written Score 3</th>
+                            <th>Coding Score</th>
+                            <th>Total Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h3>Novice</h3>
+                <table id="teamViewNovice">
+                    <thead>
+                        <tr>
+                            <th>School</th>
+                            <th>Team</th>
+                            <th>Written Score 1</th>
+                            <th>Written Score 2</th>
+                            <th>Written Score 3</th>
+                            <th>Coding Score</th>
+                            <th>Total Score</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </body>
 </html>

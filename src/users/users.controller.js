@@ -41,6 +41,25 @@ const userController = {
         });
     },
 
+    getAllUsers: (callback)=>{
+        mongo.getConnection((err, db)=>{
+            if(err){
+                return callback(err, null);
+            }
+            db.collection("users", (err, collection)=>{
+                if(err){
+                    return callback(err, null);
+                }
+                collection.find({}, {password: false}).toArray((err, result)=>{
+                    if(err){
+                        return callback(err, null);
+                    }
+                    callback(null, result);
+                });
+            });
+        });
+    },
+
     update: (_id, update, callback)=>{
         mongo.getConnection((err, db)=>{
             if(err){

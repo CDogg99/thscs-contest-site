@@ -1,4 +1,5 @@
 var token = Cookies.get("token");
+var ip = "localhost";
 
 if(token){
     if(jwt_decode(token).userType != "team"){
@@ -32,7 +33,7 @@ $(document).ready(function(){
             }
         };
         $.ajax({
-            url: "http://localhost:3000/api/users/" + jwt_decode(token)._id,
+            url: "http://" + ip + ":80/api/users/" + jwt_decode(token)._id,
             type: "PUT",
             contentType: "application/json",
             dataType: "json",
@@ -63,7 +64,7 @@ $(document).ready(function(){
 
 function loadTeamData(){
     $.ajax({
-        url: "http://localhost:3000/api/users/" + jwt_decode(token).username,
+        url: "http://" + ip + ":80/api/users/" + jwt_decode(token).username,
         type: "GET",
         contentType: "application/json",
         dataType: "json",

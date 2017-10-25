@@ -1,4 +1,5 @@
 var token = Cookies.get("token");
+var ip = "localhost";
 
 if(token){
     if(jwt_decode(token).userType=="team"){
@@ -17,7 +18,7 @@ $(document).ready(function(){
             password: $("#password").val()
         };
         $.ajax({
-            url: "http://localhost:3000/api/users/authenticate",
+            url: "http://" + ip + ":80/api/users/authenticate",
             type: "POST",
             contentType: "application/json",
             dataType: "json",

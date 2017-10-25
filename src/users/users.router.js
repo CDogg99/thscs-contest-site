@@ -69,12 +69,12 @@ router.put("/:_id", (req, res)=>{
     //admins may modify a team's written scores and coding score
     else if(req.user.admin){
         const update = {
-            "members.m1.writtenScore": req.body.m1.writtenScore,
-            "members.m2.writtenScore": req.body.m2.writtenScore,
-            "members.m3.writtenScore": req.body.m3.writtenScore,
+            "members.m1.writtenScore": req.body.members.m1.writtenScore,
+            "members.m2.writtenScore": req.body.members.m2.writtenScore,
+            "members.m3.writtenScore": req.body.members.m3.writtenScore,
             codingScore: req.body.codingScore
         };
-        userController.update(_id, req.body, (err, result)=>{
+        userController.update(_id, update, (err, result)=>{
             if(err){
                 return res.json({error: err.message});
             }
@@ -115,6 +115,27 @@ router.get("/:username", (req, res)=>{
     }
 });
 
+router.get("/" , (req, res)=>{
+    if(req.user === null){
+        return res.json({error: "Not authorized"});
+    }
+    if(req.user.admin){
+        userController.getAllUsers((err, result)=>{
+            if(err){
+                return res.json({error: err.message});
+            }
+            if(!result){
+                res.json({error: "No users found"});
+            }
+            else{
+                res.json({users: result});
+            }
+        });
+    }
+    else{
+        return res.json({error: "Not authorized"});
+    }
+});
 
 
 module.exports = router;

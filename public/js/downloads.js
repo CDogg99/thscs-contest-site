@@ -1,11 +1,6 @@
 var token = Cookies.get("token");
 
-if(token){
-    if(jwt_decode(token).userType != "team"){
-        window.location.replace("admin.html");
-    }
-}
-else{
+if(!token){
     window.location.replace("index.html");
 }
 
