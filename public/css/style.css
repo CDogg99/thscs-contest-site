@@ -1,0 +1,95 @@
+@font-face {
+    font-family: "Nitemare";
+    src: url("../assets/Nitemare.ttf") format("truetype");
+}
+
+body{
+    background:#03001C;
+    color:white;
+    margin:0px;
+    font-family: "Playfair Display SC";
+}
+
+#moon{
+    border-radius: 50%;
+    position: absolute;
+    top:0;
+    width: 650px;
+    height: 650px;
+    top:calc(50% - 325px);
+    left:calc(50% - 325px);
+    background: #fefcd7;
+    box-shadow: 0px 0px 73px 11px rgba(254,252,215,0.5);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+
+input[type=text], input[type=password]{
+    border-radius: 5px;
+    border:none;
+    height: 110%;
+    background: rgba(1,1,1,.05);
+    padding:2%;
+}
+
+#tree{
+    width: 500px;
+    height: 750px;
+    position: absolute;
+    left: -35px;
+    bottom:0px;
+    background: url(../assets/tree.png);
+}
+
+.subtitle{
+    font-size:150%;
+    color:#454955;
+    margin-top:30px;
+}
+
+#loginResponse{
+    font-size:85%;
+    margin:5px;
+    color:#8a0707;
+}
+
+#pumpkins{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+input[type=submit]{
+    margin: 5px 0px;
+    border:0px;
+    font-family: "Playfair Display SC";
+    border-radius: 5px;
+    padding:2%;
+    font-size:80%;
+    cursor: pointer;
+}
+
+form{
+    display:flex;
+    flex-direction: column;
+    color:black;
+}
+
+.title{
+    font-size:250%;
+    width: 50%;
+    text-align: center;
+    color:#454955;
+    font-family: "Nitemare";
+    margin-bottom: 0;
+}
+
+#fence{
+    height: 250px;
+    width: 100%;
+    background: url(../assets/fence.png);
+    position: absolute;
+    bottom:0px;
+}
