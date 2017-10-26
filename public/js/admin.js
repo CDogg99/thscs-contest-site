@@ -1,6 +1,6 @@
 var token = Cookies.get("token");
 var ip = "localhost";
-var numTeams = 10;
+var numTeams = 100;
 var curTeam;
 
 if(token){
@@ -124,9 +124,13 @@ function loadTableData(){
             else{
                 $("#teamViewAdvanced tbody").empty();
                 $("#teamViewNovice tbody").empty();
+                $("#wsViewAdvanced tbody").empty();
+                $("#wsViewNovice tbody").empty();
                 data = data.users;
                 var advancedTeams = [];
                 var noviceTeams = [];
+                var advancedWS = [];
+                var noviceWS = [];
                 for(var i = 0; i < data.length; i++){
                     var cur = data[i];
                     if(cur.admin){
@@ -165,18 +169,60 @@ function loadTableData(){
                         cur.totalScore = ws1 + ws2 + ws3 + cs;
                         if(cur.division == "Advanced"){
                             advancedTeams.push(cur);
+                            var m1a = {
+                                name: cur.members.m1.name,
+                                school: cur.school,
+                                writtenScore: ws1
+                            };
+                            var m2a = {
+                                name: cur.members.m2.name,
+                                school: cur.school,
+                                writtenScore: ws2
+                            };
+                            var m3a = {
+                                name: cur.members.m3.name,
+                                school: cur.school,
+                                writtenScore: ws3
+                            };
+                            advancedWS.push(m1a, m2a, m3a);
                         }
                         else if(cur.division == "Novice"){
                             noviceTeams.push(cur);
+                            var m1n = {
+                                name: cur.members.m1.name,
+                                school: cur.school,
+                                writtenScore: ws1
+                            };
+                            var m2n = {
+                                name: cur.members.m2.name,
+                                school: cur.school,
+                                writtenScore: ws2
+                            };
+                            var m3n = {
+                                name: cur.members.m3.name,
+                                school: cur.school,
+                                writtenScore: ws3
+                            };
+                            noviceWS.push(m1n, m2n, m3n);
                         }
                     }
                 }
+                console.log(advancedWS);
+                console.log(noviceWS);
                 advancedTeams.sort(function(a, b){
                     return b.totalScore - a.totalScore;
                 });
                 noviceTeams.sort(function(a, b){
                     return b.totalScore - a.totalScore;
                 });
+                advancedWS.sort(function(a, b){
+                    return b.writtenScore - a.writtenScore;
+                });
+                noviceWS.sort(function(a, b){
+                    return b.writtenScore - a.writtenScore;
+                });
+                console.log(advancedWS);
+                console.log(noviceWS);
                 for(var f =0; f < advancedTeams.length; f++){
                     var curAd = advancedTeams[f];
                     curAd.username = curAd.username.substring(4);
@@ -202,6 +248,22 @@ function loadTableData(){
                     app2.append($("<td>").text(curNov.codingScore));
                     app2.append($("<td>").text(curNov.totalScore));
                     $("#teamViewNovice").append(app2);
+                }
+                for(var z = 0; z < advancedWS.length; z++){
+                    var curAdWS = advancedWS[z];
+                    var app3 = $("<tr>");
+                    app3.append($("<td>").text(curAdWS.name));
+                    app3.append($("<td>").text(curAdWS.school));
+                    app3.append($("<td>").text(curAdWS.writtenScore));
+                    $("#wsViewAdvanced").append(app3);
+                }
+                for(var h = 0; h < noviceWS.length; h++){
+                    var curNovWS = noviceWS[h];
+                    var app4 = $("<tr>");
+                    app4.append($("<td>").text(curNovWS.name));
+                    app4.append($("<td>").text(curNovWS.school));
+                    app4.append($("<td>").text(curNovWS.writtenScore));
+                    $("#wsViewNovice").append(app4);
                 }
             }
         }

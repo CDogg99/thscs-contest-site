@@ -5,7 +5,7 @@ mongodb.connect(config.database.url, (err, database)=>{
     if(err) throw err;
     database.collection("users", (err, collection)=>{
         if(err) throw err;
-        let numTeams = 10;
+        let numTeams = 100;
         let generatedTeams = [];
         for(let i = 0; i < numTeams; i++){
             let username = "team" + (i+1);
