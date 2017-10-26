@@ -38,3 +38,4 @@ mongod --auth
 nodemon
 ```
 11. Upload necessary documents to `public/downloads/` as needed
+12. Modify the `href` attributes for the anchor elements in `public/downloads.html` to match the uploaded files
