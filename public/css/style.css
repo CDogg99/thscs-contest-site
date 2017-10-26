@@ -3,6 +3,11 @@
     src: url("../assets/Nitemare.ttf") format("truetype");
 }
 
+@font-face{
+    font-family: "Playfair Display SC";
+    src: url("../assets/PlayfairDisplaySC-Regular.ttf")
+}
+
 body{
     background:#03001C;
     color:white;
@@ -49,10 +54,15 @@ input[type=text], input[type=password]{
     margin-top:30px;
 }
 
-#loginResponse{
+#loginResponse, #teamUpdateResponse{
     font-size:85%;
     margin:5px;
     color:#8a0707;
+}
+
+input[type=text]{
+    color:white;
+    background: rgba(0,0,0,.25);
 }
 
 #pumpkins{
@@ -61,7 +71,7 @@ input[type=text], input[type=password]{
     right: 0px;
 }
 
-input[type=submit]{
+.button{
     margin: 5px 0px;
     border:0px;
     font-family: "Playfair Display SC";

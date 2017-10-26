@@ -1,0 +1,93 @@
+#moon{
+    width:250px;
+    height:250px;
+    top:50px;
+    left:50px;
+    justify-content: center;
+}
+
+.button{
+    margin-top:10px;
+}
+
+form{
+    color: white;
+    transform: rotateY(10deg);
+    margin-left:50px;
+}
+
+#teamInfo{
+    text-align: center;
+}
+
+a{
+    align-self: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 120%;
+    margin-left:50px;
+    font-family: "Nitemare";
+    border-bottom: 2px solid white;
+}
+
+a:active{
+    color: white;
+}
+
+a:visited{
+    color: white;
+}
+
+#team-desc{
+    margin-top: 0;
+}
+
+.inscription{
+    font-family: "Nitemare";
+    font-size:200%;
+    border-bottom: 2px solid white;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.tomb p{
+    transform: rotateY(10deg);
+    margin-left:50px;
+}
+
+.small{
+    font-size:110%;
+    border-bottom: 0px;
+    margin:2px;
+}
+
+.tomb{
+    position: relative;
+    bottom: 0;
+    width: 600px;
+    height: 500px;
+    background: url(../assets/graveyard.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding:1%;
+    padding-top:5%;
+}
+
+#graveyard{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#moon .title{
+    font-size: 130%;
+    margin:0;
+}

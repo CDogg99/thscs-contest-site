@@ -7,33 +7,37 @@
         <script src="js/lib/js.cookie.js" type="text/javascript"></script>
         <script src="js/lib/jwt-decode.min.js" type="text/javascript"></script>
         <script src="js/team.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/team.css">
     </head>
     <body>
-        <button id="signOut">Sign Out</button>
-        <h1>THS Computer Science Contest 2017</h1>
-        <a href="downloads.html">Downloads</a>
-        <div id="teamInfo">
-            <h2>Team Info</h2>
-            <p id="team"></p>
-            <p id="division"></p>
-            <p id="school"></p>
-            <h3>Members</h3>
-            <p class="m1"></p>
-            <p class="m2"></p>
-            <p class="m3"></p>
-            <h3>Scores</h3>
-            <h4>Written</h4>
-            <p class="m1"></p>
-            <p id="ws1"></p>
-            <p class="m2"></p>
-            <p id="ws2"></p>
-            <p class="m3"></p>
-            <p id="ws3"></p>
-            <h4>Coding</h4>
-            <p id="codingScore"></p>
+        <div id="moon">
+            <p class="title">THS Computer Science Contest 2017</p>
+            <button id="signOut" class="button">SIGN OUT</button>
         </div>
-        <div>
-            <h2>Update Team Info</h2>
+        <div id="graveyard">
+        <div class="tomb">
+                <div id="teamInfo">
+                <p id="team" class="inscription"></p>
+                <p id="team-desc"><span id="school"></span> (<span id="division"></span>)</p>
+                <p class="inscription small">Members</p>
+                <p class="m1"></p>
+                <p class="m2"></p>
+                <p class="m3"></p>
+                <a href="downloads.html">Downloads</a>
+            </div>
+        </div>
+        <div class="tomb">
+                <p class="inscription">Scores</p>
+                <p class="inscription small">Written</h4>
+                <p><span class="m1"></span>: <span id="ws1"></span></p>
+                <p><span class="m2"></span>: <span id="ws2"></span></p>
+                <p><span class="m3"></span>: <span id="ws3"></span></p>
+                <p class="inscription small">Coding</p>
+                <p id="codingScore"></p>
+        </div>
+        <div class="tomb">
+            <p class="inscription">Update Team Info</p>
             <span id="teamUpdateResponse"></span>
             <form id="teamUpdateForm">
                 <label for="divisionIn">Division</label>
@@ -49,8 +53,9 @@
                 <input type="text" id="m2nameIn" placeholder="Member 2's name">
                 <label for="m3nameIn">Member 3's name</label>
                 <input type="text" id="m3nameIn" placeholder="Member 3's name">
-                <input type="submit">
+                <input type="submit" class="button">
             </form>
+        </div>
         </div>
     </body>
 </html>
