@@ -7,12 +7,13 @@
         <script src="js/lib/js.cookie.js" type="text/javascript"></script>
         <script src="js/lib/jwt-decode.min.js" type="text/javascript"></script>
         <script src="js/admin.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="css/admin.css" type="text/css">
     </head>
     <body>
+        <h1 class="title">THS Computer Science Contest 2017</h1>
         <button id="signOut">Sign Out</button>
-        <h1>THS Computer Science Contest 2017</h1>
         <div>
-            <h2>Update Team Scores</h2>
+            <h2 class="title">Update Team Scores</h2>
             <span>Team</span>
             <select id="teamSelect">
                 <option value="select" selected>Select</option>
@@ -30,11 +31,40 @@
                 <input type="text" id="codingScoreIn">
                 <input type="submit">
             </form>
+            <div id="list-all">LIST ALL</div>
             <div id="forms-list"></div>
-            <div id="list-all">List All</div>
         </div>
         <div>
-            <h2>All Scores</h2>
+            <h2 class="title">Top Written Scores</h2>
+            <div>
+                <h3>Advanced</h3>
+                <table id="wsViewAdvanced">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>School</th>
+                            <th>Written Score</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div>
+                <h3>Novice</h3>
+                <table id="wsViewNovice">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>School</th>
+                            <th>Written Score</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+            <h2 class="title">All Scores</h2>
             <div>
                 <h3>Advanced</h3>
                 <table id="teamViewAdvanced">
@@ -69,35 +99,6 @@
                     </thead>
                     <tbody>
                     </tbody>
-                </table>
-            </div>
-        </div>
-        <div>
-            <h2>Top Written Scores</h2>
-            <div>
-                <h3>Advanced</h3>
-                <table id="wsViewAdvanced">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>School</th>
-                            <th>Written Score</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            <div>
-                <h3>Novice</h3>
-                <table id="wsViewNovice">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>School</th>
-                            <th>Written Score</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
                 </table>
             </div>
         </div>

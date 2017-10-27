@@ -1,3 +1,67 @@
+@font-face {
+    font-family: "Nitemare";
+    src: url("../assets/Nitemare.ttf") format("truetype");
+}
+
+@font-face{
+    font-family: "Playfair Display SC";
+    src: url("../assets/PlayfairDisplaySC-Regular.ttf")
+}
+
+
 #list-all{
-    border:2px solid black;
+    border:2px solid white;
+    text-align: center;
+    border-radius: 5px;
+    margin:15px 0;
+}
+
+.list-form{
+    background: #a78eb8;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 2%;
+    border-radius: 5px;
+}
+
+.list-form label, .list-form p{
+    margin: 0 10px;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+td{
+    border:none;
+}
+
+th{
+    background-color: #644B77;
+}
+
+.title{
+    font-family: "Nitemare";
+}
+
+th, td{
+    padding: 0 2%;
+    text-align: left;
+}
+
+tr:nth-child(odd){
+    background-color: #92819f;
+}
+
+tr:nth-child(even){
+    background-color: #a78eb8;}
+
+body{
+    color:white;
+    background: #03001C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Playfair Display SC";
 }

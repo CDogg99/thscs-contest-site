@@ -2,6 +2,7 @@ var token = Cookies.get("token");
 var ip = "localhost";
 var numTeams = 100;
 var curTeam;
+var showList=false;
 
 if(token){
     if(jwt_decode(token).userType != "admin"){
@@ -19,7 +20,15 @@ $(document).ready(function(){
     loadTableData();
 
     $("#list-all").on("click",function(){
-       loadAllTeamData(); 
+        if(!showList){
+            loadAllTeamData(); 
+            $(this).html("COLLAPSE");
+            showList=true;
+        }else{
+            showList=false;
+            $(this).html("LIST ALL");
+            $("#forms-list").empty();
+        }
     });
     
     $("#signOut").on("click", function(){
@@ -78,7 +87,7 @@ $(document).ready(function(){
 
 function loadAllTeamData(){
     console.log("called");
-    $("forms-list").html();
+    $("#forms-list").empty();
     var template="<span>Team @:</span><span id='updateScoresResponse@'></span><form id='updateScoresForm@'  class='list-form'><p>Written Scores</p><label for='m1wsIn@' id='m1@' ></label>";
     template+="<input type='text' id='m1wsIn@' ><label for='m2wsIn@' id='m2@' ></label><input type='text' id='m2wsIn@' ><label for='m3wsIn@' id='m3@' ></label>";
     template+="<input type='text' id='m3wsIn@' ><p>Coding Score</p><input type='text' id='codingScoreIn@'><input type='submit' id='button@'</form>";
