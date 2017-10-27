@@ -18,6 +18,10 @@ $(document).ready(function(){
     }
     loadTableData();
 
+    $("#list-all").on("click",function(){
+       loadAllTeamData(); 
+    });
+    
     $("#signOut").on("click", function(){
         Cookies.remove("token");
         window.location.replace("index.html");
@@ -43,6 +47,7 @@ $(document).ready(function(){
             },
             codingScore: $("#codingScoreIn").val()
         };
+        console.log(JSON.stringify(update));
         $.ajax({
             url: "http://" + ip + ":80/api/users/" + curTeam._id,
             type: "PUT",
@@ -70,6 +75,84 @@ $(document).ready(function(){
         return false;
     });
 });
+
+function loadAllTeamData(){
+    console.log("called");
+    $("forms-list").html();
+    var template="<span>Team @:</span><span id='updateScoresResponse@'></span><form id='updateScoresForm@'  class='list-form'><p>Written Scores</p><label for='m1wsIn@' id='m1@' ></label>";
+    template+="<input type='text' id='m1wsIn@' ><label for='m2wsIn@' id='m2@' ></label><input type='text' id='m2wsIn@' ><label for='m3wsIn@' id='m3@' ></label>";
+    template+="<input type='text' id='m3wsIn@' ><p>Coding Score</p><input type='text' id='codingScoreIn@'><input type='submit' id='button@'</form>";
+    for(i=1;i<numTeams+1;i++){
+        $.ajax({
+        url: "http://" + ip + ":80/api/users/team" + i,
+        type: "GET",
+        contentType: "application/json",
+        dataType: "json",
+        headers: {
+            "authorization": token
+        },
+        success: function(data){
+            if(data.error){
+            }else{
+                var i=parseInt(data.user.username.substring(4));
+                var temp=template;
+                temp=temp.replace(new RegExp(/@/,'g'),i);
+                $("#forms-list").append(temp);
+                $("#button"+i).on("click",function(){
+                    var update = {
+                        members:{
+                            m1:{
+                                writtenScore: $("#m1wsIn"+i).val()
+                            },
+                            m2:{
+                                writtenScore: $("#m2wsIn"+i).val()
+                            },
+                            m3:{
+                                writtenScore: $("#m3wsIn"+i).val()
+                            }
+                        },
+                        codingScore: $("#codingScoreIn"+i).val()
+                    };
+                    $.ajax({
+                        url: "http://" + ip + ":80/api/users/" + data._id,
+                        type: "PUT",
+                        contentType: "application/json",
+                        dataType: "json",
+                        headers: {
+                            "authorization": token
+                        },
+                        data: JSON.stringify(update),
+                        success: function(data){
+                            if(data.error){
+                                $("#updateScoresResponse"+i).html(data.error);
+                            }
+                            else{
+                                if(data.success){
+                                    $("#updateScoresResponse"+i).html("Update successful");
+                                }
+                                else{
+                                    $("#updateScoresResponse"+i).html("Update failed");
+                                }
+                                loadTableData();
+                            }
+                        }
+                    });
+                    return false;   
+                });
+                data = data.user;
+                curTeam = data;
+                $("#m1"+i).html(data.members.m1.name);
+                $("#m2"+i).html(data.members.m2.name);
+                $("#m3"+i).html(data.members.m3.name);
+                $("#m1wsIn"+i).val(data.members.m1.writtenScore);
+                $("#m2wsIn"+i).val(data.members.m2.writtenScore);
+                $("#m3wsIn"+i).val(data.members.m3.writtenScore);
+                $("#codingScoreIn"+i).val(data.codingScore);
+            }
+        }
+        });
+    }
+}
 
 function loadTeamData(){
     var team = $("#teamSelect").val();
