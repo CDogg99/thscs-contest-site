@@ -14,15 +14,13 @@
     "url": "https://github.com/CDogg99/thscs-contest-site/issues"
   },
   "homepage": "https://github.com/CDogg99/thscs-contest-site#readme",
-  "devDependencies": {
-    "nodemon": "^1.12.1"
-  },
+  "devDependencies": {},
   "dependencies": {
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "jsonwebtoken": "^8.1.0",
     "mongodb": "^2.2.33",
-    "validator": "^9.0.0"
+    "nodemon": "^1.12.1"
   }
 }
